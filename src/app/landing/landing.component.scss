@@ -1,0 +1,106 @@
+
+
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+
+    .welcome{
+        width: 100%;
+        height: 100vh;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+
+
+        .presentation{
+            flex: .7 1;
+            margin-left: 8rem;
+            z-index: 10;
+
+            h1{ 
+                color: var(--black);
+                font-size: 3.3rem;
+                width: 100%;
+                line-height: 4rem;
+                span{
+                    background: linear-gradient(to right, var(--purple) , var(--pink));
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                }
+            }
+            p{
+                color: #777;
+                font-size: 2.2rem;
+                margin: 2rem  0 3.5rem 0;
+                line-height: 2.5rem;
+                
+                span{
+                border-bottom: 4px solid ;
+                border-width: 4px;
+                border-image-slice: 1;
+                border-image-source: linear-gradient(to right, var(--purple) , var(--pink));
+                width: fit-content;
+                padding-bottom: .3rem;
+                }
+            }
+            a{
+                background-color: var(--purple);
+                color: #fff;
+                font-size: 1.2rem;
+                padding: .3rem 2rem;
+                transition: .2s;
+
+            }
+            a:hover{
+                letter-spacing: .04rem;
+                transition: .2s;
+            }
+        }
+
+        .paint{
+            flex: 1 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background: linear-gradient(to right, var(--purple) , var(--pink));
+            border-radius:100% 0% 33% 67% / 0% 100% 0% 100%    ;
+            box-shadow: inset 0 0 50px #333;
+
+
+
+            .img-cont{
+                img{
+                    object-fit: cover;
+                    width: 100%;
+                    z-index: 20;
+                    transform: translateY(-40px);
+                }
+            }
+        }
+    }
+
+    .about{
+        height: 200vh;
+        background-color: #fff;
+        width: 100%;
+
+        .row{
+            mat-icon{
+                background: linear-gradient(to right, var(--purple) , var(--pink));
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                transform: scale(5);
+            }
+        }
+    }
+}
+

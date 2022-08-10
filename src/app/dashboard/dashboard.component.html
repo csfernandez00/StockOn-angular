@@ -1,0 +1,32 @@
+<div class="dashboard">
+    <header class="header">
+        <div>
+            <a (click)="openDialog()" class="logo">
+                <mat-icon>timeline</mat-icon>
+                Stock<span>ON</span>
+            </a>
+        </div>
+        <div class="user-menu">
+            <h4>Hola, <strong>{{name}}</strong>!</h4>
+            <div>
+                <button mat-mini-fab [matMenuTriggerFor]="menu">
+                    <mat-icon>person</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <a routerLink="/dashboard/home" mat-menu-item>Inicio</a>
+                    <a routerLink="/dashboard/stock" mat-menu-item>Mi Stock</a>
+
+                    <a routerLink="/dashboard/support" style="border-top: 1px solid #eee;" mat-menu-item>Soporte</a>
+                    <a routerLink="/dashboard/profile" mat-menu-item>Perfil</a>
+                    <a routerLink="" style="border-top: 1px solid #eee;" mat-menu-item>Cerrar Sesión</a>
+                </mat-menu>
+            </div>
+        </div>
+    </header>
+
+    <app-sidenav></app-sidenav>
+
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+</div>

@@ -1,0 +1,38 @@
+<div class="container">
+    <h2 mat-dialog-title class="title">Crea tu producto</h2>
+
+    <form [formGroup]="productForm">
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" id="name" formControlName="nombre">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Modelo</mat-label>
+            <input matInput type="text" id="model" formControlName="modelo">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Marca</mat-label>
+            <input matInput type="text" id="brand" formControlName="marca">
+        </mat-form-field>
+
+        <div class="row">
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Cantidad</mat-label>
+                <input matInput type="number" id="quantity" formControlName="cantidad">
+            </mat-form-field>
+    
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Codigo</mat-label>
+                <input matInput type="text" id="code" formControlName="codigo">
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div class="btns">
+        <button type="submit" class="btn-create" [disabled]="productForm.invalid" mat-raised-button (click)="onCreate()">Crear</button>
+        <button type="button" class="btn-cancel" mat-button (click)="onCancel()">Cancelar</button>
+    </div>
+
+</div>

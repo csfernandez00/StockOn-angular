@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+    --purple: #9961F5;
+    --pink: #F57FA4;
+    --grey: #e1e1e1;
+    --blue: #3f51b5;
+    --black: #444;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing:border-box ;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+html, body{
+    height: 100%; 
+}
+
+body{
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: var(--grey);
+}
+
+
+@media(max-width: 1600px) {
+    html{
+        font-size: 90%
+    }
+}
+
+@media(max-width: 1500px) {
+    html{
+        font-size: 85%
+    }
+    
+}
+
+@media(max-width: 1400px) {
+    html{
+        font-size: 75%
+    }
+    
+}

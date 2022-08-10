@@ -1,0 +1,116 @@
+<div class="frame">
+    <mat-grid-list class="grid-container" cols="8" rowHeight="fit" [gutterSize]="'1.5rem'">
+
+
+        <mat-grid-tile class="grid-item recent-activity mat-elevation-z3" colspan="6">
+            <mat-grid-tile-header class="title">Actividad reciente</mat-grid-tile-header>
+            <div class="row">
+                <div class="cards">
+                    <div class="report mat-elevation-z5">
+                        <div class="icon">
+                            <mat-icon class="card-icon">archive</mat-icon>
+                            <p><span>+</span>{{recentActivity.length}} <br>
+                                <mat-hint style="font-size: .9rem;">Nuevos Productos</mat-hint>
+                            </p>
+                        </div>
+                        <div class="total">
+
+                            <h2>{{totalProducts}}</h2>
+                            <mat-hint>Total Productos -</mat-hint>
+
+                        </div>
+                    </div>
+
+                    <div class="report mat-elevation-z5">
+                        <div class="icon">
+                            <mat-icon class="card-icon">layers</mat-icon>
+                            <p><span>+</span>{{recentUnitsAdded}} <br>
+                                <mat-hint style="font-size: .9rem;">Unidades Añadidas</mat-hint>
+                            </p>
+                        </div>
+                        <div class="total">
+
+                            <h2>{{totalUnits}}</h2>
+                            <mat-hint>Total Unidades -</mat-hint>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tabla">
+                    <table mat-table [dataSource]="dataSource">
+                        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+                            <th mat-header-cell *matHeaderCellDef> {{ column | titlecase }}</th>
+                            <td mat-cell *matCellDef="let product;"> {{product[column]}} </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    
+                    <p>Ultimos añadidos</p>                    
+                </div>
+            </div>
+
+        </mat-grid-tile>
+
+        <!-- Profile -->
+        <mat-grid-tile class="grid-item mat-elevation-z3" colspan="2">
+
+            <div class="cont" style="grid-template-rows: 60% 40%; gap: 0; padding-top: 3rem;">
+                <mat-icon class="home-card-icon">person</mat-icon>
+                <div>
+                    <h3>Mi Perfil</h3>
+                    <button mat-button style="color: var(--purple); font-size: 1rem;" routerLink="/dashboard/profile">Ir
+                        a
+                        ajustes <mat-icon style="transform: scale(1); color: var(--purple);margin-bottom: .17rem;">
+                            arrow_forward</mat-icon></button>
+                </div>
+            </div>
+        </mat-grid-tile>
+
+        <!-- Stats -->
+        <mat-grid-tile class="grid-item mat-elevation-z3" id="stats" colspan="4">
+            <mat-grid-tile-header class="title">Estadísticas</mat-grid-tile-header>
+                <div class="cont">
+                    <div>
+                        <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType">
+                        </canvas>
+                    </div>
+                    <div>
+                        <canvas baseChart height="283" [datasets]="lineChartData" [labels]="lineChartLabels"
+                            [options]="lineChartOptions" [legend]="lineChartLegend" [type]="lineChartType">
+                        </canvas>
+                    </div>
+                </div>
+        </mat-grid-tile>
+
+        <!-- Help -->
+        <mat-grid-tile class="grid-item mat-elevation-z3" colspan="2">
+            <div class="cont">
+                <mat-icon class="home-card-icon">file_copy</mat-icon>
+                <div>
+                    <h3>Primeros pasos en la app?</h3>
+                    <p>No te olvides de leer la documentación para saber como utilizar la app de manera correcta
+                    </p>
+                    <button mat-raised-button style="background-color: var(--purple); color:#fff;"
+                        (click)="openDialog()">Saber más</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+
+
+        <!-- Support -->
+        <mat-grid-tile class="grid-item mat-elevation-z3" colspan="2">
+            <div class="cont">
+                <mat-icon class="home-card-icon">contact_support</mat-icon>
+                <div>
+                    <h3>Necesitas ayuda?</h3>
+                    <p>Ponte en contacto con nosotros,
+                        detallandonos el problema que estas teniendo
+                        y te ayudaremos.</p>
+                    <button mat-raised-button style="background-color: var(--purple); color:#fff;"
+                        routerLink="/dashboard/support">Contactar</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
