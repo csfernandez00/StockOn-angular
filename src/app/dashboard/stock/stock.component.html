@@ -6,7 +6,8 @@
                 <div class="search">
                     <mat-form-field class="form-field" appearance="outline">
                         <mat-label>Buscar...</mat-label>
-                        <input matInput [(ngModel)]="value" (keyup)="onSearch(input.value)" placeholder="Producto, detalle" #input>
+                        <input matInput [(ngModel)]="value" (keyup)="onSearch(input.value)"
+                            placeholder="Producto, detalle" #input>
                         <mat-icon matSuffix>search</mat-icon>
                     </mat-form-field>
                 </div>
@@ -15,7 +16,7 @@
         <div class="main">
             <div>
                 <table mat-table [dataSource]="dataSource" matSort>
-                    <!-- dynamic column -->         
+                    <!-- dynamic column -->
                     <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ column | titlecase }}</th>
                         <td mat-cell *matCellDef="let product;" (click)="onSelect(product)"
@@ -35,7 +36,8 @@
                 <button *ngIf="productSelected" mat-raised-button color="basic" title="Editar producto"
                     (click)="onClear()">Deseleccionar</button>
                 <button *ngIf="productSelected" mat-raised-button color="warn" title="Editar producto"
-                    (click)="onDelete()">Eliminar Producto</button>
+                    (click)="deleteProduct(productSelected)">
+                    Eliminar Producto</button>
             </div>
             <mat-paginator [pageSizeOptions]="[15, 10, 20, 40]" showFirstLastButtons
                 aria-label="Seleccionar pagina de productos">

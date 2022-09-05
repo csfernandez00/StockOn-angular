@@ -1,159 +1,47 @@
-import { Injectable, OnInit} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from './product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-export class StockService{
-  id!:number
-  products:Product[] = [
-    {
-      id: 1,
-      nombre: "Celular",
-      modelo: "Azul",
-      marca: "Samsung",
-      cantidad: 10,
-      codigo: "00-01"
-    },
-    {
-      id: 2,
-      nombre: "Televisor",
-      modelo: "4k",
-      marca: "Samsung",
-      cantidad: 10,
-      codigo: "00-02"
-    }, 
-    {
-      id: 3,
-      nombre: "Tablet",
-      modelo: "Blanca",
-      marca: "Samsung",
-      cantidad: 10,
-      codigo: "00-03"
-    },
-  ];
-
-  constructor() {
-    this.filterProducts()
+export class StockService {
+  lastAdded: number = 0;
+  constructor(private readonly http: HttpClient) {
+    this.getProducts();
   }
 
-  productsResume!:any[];
-  recentActivity:Product[]=[];
-  lastProductsAdded:Product[] = [];
-  
-
-
-  getProducts(){
-    return this.products
+  // CRUD requests
+  getProducts(): Observable<any> {
+    return this.http.get('http://localhost:3002/products/');
   }
 
-
-  postProduct(product:Product){}
-
-
-
-  deleteProduct(id:number){
-
+  postProduct(product: Product) {
+    this.http
+      .post('http://localhost:3002/products/', product)
+      .subscribe((data) => {});
+    this.lastAdded++;
   }
 
-
-
-
-
-
-  // deleteProduct(productSelected:Product){
-  //   this.products = this.products.filter(product => product !== productSelected)
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  filterProducts(){
-    const productsFiltered = this.products.reduce((acc:Product[], value:Product) => {
-      const doesExist = acc.find(elemento => elemento.marca === value.marca);
-
-      if (doesExist) {
-        return acc.map((elemento) => {
-          if (elemento.marca === value.marca) {
-            return {
-              ...elemento,
-              cantidad: elemento.cantidad + value.cantidad
-            }
-          }
-    
-          return elemento;
-        });
-      }
-    
-      return [...acc, value];
-    }, []);
-    this.productsResume = productsFiltered;
-  }
-
-
-  getBrand(){ 
-    const arr:string[] =[]
-    for(let product of this.productsResume){
-      arr.push(product.marca)
+  deleteProduct(id: number) {
+    this.http
+      .delete(`http://localhost:3002/products/${id}/delete`)
+      .subscribe((data) => {});
+    if (this.lastAdded > 0) {
+      this.lastAdded--;
     }
-    return arr
   }
 
-  getQuantity(){
-      const arr:number[] = []
-      for(let product of this.productsResume){
-        arr.push(product.cantidad)
-      }
-    return arr
+  updateProduct(updatedProduct: Product) {
+    return this.http.post(
+      `http://localhost:3002/products/${updatedProduct.id}/update`,
+      updatedProduct
+    );
   }
+  //CRUD requests end
 
-  updateList(np:Product){
-    this.productsResume.push(np)
-    this.recentActivity.push(np)
-    if(this.lastProductsAdded.length < 3){
-      this.lastProductsAdded.push(np)
-    }else{
-      this.lastProductsAdded.shift()
-      this.lastProductsAdded.push(np)
-    }
-    this.filterProducts()
-  }
-
-
-  getTotalProducts(){
-    return this.products.length
-  }
-
-  getTotalUnits(){
-    let totalUnits:number = 0;
-    for(let product of this.products){
-      totalUnits += product.cantidad
-    }
-    return totalUnits
-  }
-
-
-  getLastUnitsAdded(){
-    let unitsAdded:number = 0;
-    for(let product of this.recentActivity){
-      unitsAdded += product.cantidad
-    }
-    return unitsAdded
+  restartLastAdded() {
+    this.lastAdded = 0;
   }
 }
-

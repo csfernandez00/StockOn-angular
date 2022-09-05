@@ -38,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,7 +79,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatInputModule,
     NgChartsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

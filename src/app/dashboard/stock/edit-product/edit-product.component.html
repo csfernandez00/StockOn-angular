@@ -1,3 +1,39 @@
-<h2>Editar producto seleccionado</h2>
+<div class="container">
+    <h2 mat-dialog-title class="title">Edita tu producto</h2>
 
-<p>{{data.product.nombre}} -- {{data.product.modelo}} -- {{data.product.marca}} -- {{data.product.cantidad}} -- {{data.product.codigo}}</p>
+    <form [formGroup]="editForm">
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" id="name" formControlName="nombre">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Modelo</mat-label>
+            <input matInput type="text" id="model" formControlName="modelo">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Marca</mat-label>
+            <input matInput type="text" id="brand" formControlName="marca">
+        </mat-form-field>
+
+        <div class="row">
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Cantidad</mat-label>
+                <input matInput type="number" id="quantity" formControlName="cantidad">
+            </mat-form-field>
+
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Codigo</mat-label>
+                <input matInput type="text" id="code" formControlName="codigo">
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div class="btns">
+        <button type="submit" class="btn-create" [disabled]="editForm.invalid" mat-raised-button
+            (click)="onEdit()">Guardar cambios</button>
+        <button type="button" class="btn-cancel" mat-button (click)="onDiscard()">Descartar</button>
+    </div>
+
+</div>

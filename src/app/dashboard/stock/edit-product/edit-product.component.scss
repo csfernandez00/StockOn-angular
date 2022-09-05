@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+
+    .title {
+        text-align: center;
+        font-size: 2rem;
+        padding: 1rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        padding-bottom: 1rem;
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            gap: .5rem;
+
+            .form-field {
+                flex: 1 1;
+            }
+        }
+    }
+
+    .btns {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: .5rem;
+
+        .btn-create:not(:disabled) {
+            background-color: var(--purple);
+            color: #fff;
+
+        }
+
+        .btn-cancel {
+            color: var(--purple);
+
+        }
+    }
+}

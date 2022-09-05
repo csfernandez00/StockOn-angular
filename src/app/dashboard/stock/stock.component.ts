@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/dashboard/product';
 import { StockService } from 'src/app/dashboard/stock.service';
 import { ConfirmComponent } from '../confirm/confirm.component';
@@ -12,116 +13,98 @@ import { NewProductComponent } from './new-product/new-product.component';
 @Component({
   selector: 'app-stock',
   templateUrl: './stock.component.html',
-  styleUrls: ['./stock.component.scss']
+  styleUrls: ['./stock.component.scss'],
 })
 export class StockComponent implements OnInit {
-  selected!:string;
-  products!:Product[];
-  displayedColumns: string[] = ["codigo", "nombre", "modelo", "marca", "cantidad"]
-  dataSource!:any;
-  productSelected!:any;
-  value!:string;
-  lastAdded!:Product[]
-  
+  value!: string;
+  products!: Product[];
+  dataSource!: any;
+  displayedColumns: string[] = [
+    'codigo',
+    'nombre',
+    'modelo',
+    'marca',
+    'cantidad',
+  ];
+  productSelected!: any;
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-
-  
-  constructor(private stockService:StockService, public dialog:MatDialog) {
-    this.products = this.stockService.getProducts()
-    this.updateDataSource()
-  }
-
-
-
-  
-
-
-  getProducts(){
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  constructor(
+    private readonly stockService: StockService,
+    private readonly dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
+    this.refresh();
   }
 
-  updateDataSource(){
-    this.dataSource = new MatTableDataSource<Product>(this.products);
+  onSearch(value: string) {
+    this.dataSource.filter = value.trim().toLowerCase();
   }
 
-
-  onSearch(value:string):void{    
-    this.dataSource.filter = value.trim().toLowerCase()
+  onSelect(product: Product) {
+    this.productSelected = product;
   }
 
-
-  onSelect(product:Product):void{
-    this.productSelected = product
+  onClear() {
+    this.productSelected = null;
   }
 
-
-  onClear(){
-    this.productSelected = null
-  }
-
-
-  onDelete():void{
-    const dialogRef = this.dialog.open(ConfirmComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      if(result === true){
-        this.stockService.deleteProduct(this.productSelected)
-        this.products = this.stockService.getProducts()
-        this.updateDataSource()
-        this.productSelected = null
-        this.stockService.filterProducts()
+  newProduct() {
+    const dialogRef = this.dialog.open(NewProductComponent, {
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result[1] === true) {
+        const newProduct: Product = result[0];
+        this.stockService.postProduct(newProduct);
+        setTimeout(() => {
+          this.refresh();
+        }, 100);
       }
     });
   }
 
-
-  newProduct():void{
-    const dialogRef = this.dialog.open(NewProductComponent, {disableClose:true});
-    dialogRef.afterClosed().subscribe((result) => { 
-      if(result[1] === true){
-        const newProduct:Product = result[0]
-        this.products.push(newProduct)
-        this.updateDataSource()
-        this.dataSource.sort = this.sort;
-        this.stockService.updateList(newProduct)
-      }
-    })
+  deleteProduct(product: Product) {
+    const id = product.id;
+    this.stockService.deleteProduct(id);
+    this.productSelected = null;
+    setTimeout(() => {
+      this.refresh();
+    }, 100);
   }
 
-
-  editProduct():void{
-    this.dialog.open(EditProductComponent, {
+  editProduct() {
+    const dialogRef = this.dialog.open(EditProductComponent, {
+      disableClose: true,
       data: { product: this.productSelected },
     });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result[1] === true) {
+        const updatedProduct: Product = result[0];
+        this.stockService.updateProduct(updatedProduct).subscribe((data) => {
+          if (data) {
+            setTimeout(() => {
+              this.refresh();
+            }, 100);
+          }
+        });
+        this.productSelected = null;
+      }
+    });
   }
 
+  refresh() {
+    this.stockService.getProducts().subscribe((data) => {
+      let orderByIdArr = data.sort(function (a: Product, b: Product) {
+        return a.id - b.id;
+      });
+      this.dataSource = new MatTableDataSource<Product>(orderByIdArr);
+      this.products = this.dataSource;
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    });
+  }
 }
-

@@ -9,7 +9,7 @@
                     <div class="report mat-elevation-z5">
                         <div class="icon">
                             <mat-icon class="card-icon">archive</mat-icon>
-                            <p><span>+</span>{{recentActivity.length}} <br>
+                            <p><span>+</span>{{lastAdded}} <br>
                                 <mat-hint style="font-size: .9rem;">Nuevos Productos</mat-hint>
                             </p>
                         </div>
@@ -25,7 +25,7 @@
                         <div class="icon">
                             <mat-icon class="card-icon">layers</mat-icon>
                             <p><span>+</span>{{recentUnitsAdded}} <br>
-                                <mat-hint style="font-size: .9rem;">Unidades Añadidas</mat-hint>
+                                <mat-hint style="font-size: .9rem;">Ultimas añadidas</mat-hint>
                             </p>
                         </div>
                         <div class="total">
@@ -45,8 +45,8 @@
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
-                    
-                    <p>Ultimos añadidos</p>                    
+
+                    <p>Ultimos añadidos</p>
                 </div>
             </div>
 
@@ -70,17 +70,17 @@
         <!-- Stats -->
         <mat-grid-tile class="grid-item mat-elevation-z3" id="stats" colspan="4">
             <mat-grid-tile-header class="title">Estadísticas</mat-grid-tile-header>
-                <div class="cont">
-                    <div>
-                        <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType">
-                        </canvas>
-                    </div>
-                    <div>
-                        <canvas baseChart height="283" [datasets]="lineChartData" [labels]="lineChartLabels"
-                            [options]="lineChartOptions" [legend]="lineChartLegend" [type]="lineChartType">
-                        </canvas>
-                    </div>
+            <div class="cont">
+                <div>
+                    <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType">
+                    </canvas>
                 </div>
+                <div>
+                    <canvas baseChart height="283" [datasets]="lineChartData" [labels]="lineChartLabels"
+                        [options]="lineChartOptions" [legend]="lineChartLegend" [type]="lineChartType">
+                    </canvas>
+                </div>
+            </div>
         </mat-grid-tile>
 
         <!-- Help -->
@@ -92,7 +92,8 @@
                     <p>No te olvides de leer la documentación para saber como utilizar la app de manera correcta
                     </p>
                     <button mat-raised-button style="background-color: var(--purple); color:#fff;"
-                        (click)="openDialog()">Saber más</button>
+                        (click)="openDialog()">Saber
+                        más</button>
                 </div>
             </div>
         </mat-grid-tile>
