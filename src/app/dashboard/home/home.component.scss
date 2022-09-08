@@ -183,20 +183,34 @@
                 align-items: center;
                 gap: 1rem;
                 width: 100%;
+                
 
 
                 div{
-                    width: 40%;
+                    width: 38%;
                     margin-top: 1rem;
                     height: 90%;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    z-index: 250ng;
+                    z-index: 250;
+                    
+                }
+                .donut-cont{
+                    animation: load .5s linear;
                 }
             }
             
         }
+    }
+}
+
+@keyframes load {
+    0%{
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 

@@ -33,6 +33,7 @@ import { EditProductComponent } from './dashboard/stock/edit-product/edit-produc
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmComponent } from './dashboard/confirm/confirm.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WarningComponent } from './components/warning/warning.component';
 
 
 
@@ -57,7 +58,8 @@ import { HttpClientModule } from '@angular/common/http';
     ExitdialogComponent,
     NewProductComponent,
     EditProductComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    WarningComponent
     
     
   ],

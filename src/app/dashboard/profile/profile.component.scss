@@ -1,0 +1,158 @@
+.frame {
+    height: 100%;
+    width: 100%;
+    padding: 1.2rem 1.2rem 2rem ;
+    .grid-container {
+        height: 100%;
+        
+        .grid-item {
+            background-color: #fff;
+            border-radius: 1rem;
+            width: 100%;
+            height: 100%;
+            .user-card{
+                width: 95%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .user-info {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        margin: auto;
+                        gap: 2rem;
+                        width: 80%;
+                        padding: 3rem;
+                        border-bottom: 2px solid #eee;
+                        .img-cont {
+                            background-image: linear-gradient(to bottom right, var(--purple) 0%, var(--pink)80%);
+                            color: transparent;
+                            padding: .3rem;
+                            border-radius: 50%;
+                
+                            .img {
+                                padding: 4rem;
+                                border-radius: 50%;
+                                background-color: #fff;
+                
+                
+                                mat-icon {
+                                    background-image: linear-gradient(to bottom right, var(--purple) 0%, var(--pink)80%);
+                                    color: transparent;
+                                    -webkit-background-clip: text;
+                                    background-clip: text;
+                                    transform: scale(3);
+                                }
+                            }
+                
+                        }
+                
+                        .data {
+                            margin-top: .5rem;
+                
+                            h2,
+                            h3 {
+                                margin: 0 0 0;
+                            }
+
+                            h2{
+                                font-size: 1.8rem;
+                                padding: 0 0 .5rem 0;
+                            }
+                            h3{
+                                font-size: 1.2rem;
+                            }
+                        }
+                    }
+                
+                    .update-info {
+                        background-color: #fff;
+                        padding: 2rem 3rem;
+                        border-radius: .5rem;
+                        width: 90%;
+                        
+                        
+                
+                        form {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1.5rem;
+                            padding-bottom: 1rem;
+                        }
+                
+                        .btns {
+                            .btn-create:not(:disabled) {
+                                background-color: var(--purple);
+                                color: #fff;
+                            }
+                
+                            .btn-cancel:not(:disabled) {
+                                color: var(--purple);
+                            }
+                        }
+                    }
+            }
+            .update-pass{
+                background-color: #fff;
+                width: 90%;
+                padding: 1.5rem 3rem;
+                form {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1.5rem;
+                        padding-bottom: 1rem;
+                    }
+                
+                    .btns {
+                        .btn-create:not(:disabled) {
+                            background-color: var(--purple);
+                            color: #fff;
+                        }
+                
+                        .btn-cancel:not(:disabled) {
+                            color: var(--purple);
+                        }
+                    }
+            }
+            .cont {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem 3rem 0;
+                
+
+                h3 {
+                    font-size: 1.5rem;
+                    margin-top: 3rem;
+                }
+
+                p {
+                    font-size: .95rem;
+                    padding-bottom: .5rem;
+                }
+
+                .card-icon {
+                    transform: scale(4);
+                    margin: auto;
+                }
+                .heart{
+                    background-image: linear-gradient(to bottom right, var(--purple) 0%, var(--pink)80%);
+                    color: transparent;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                }
+                .social-link{
+                    background-image: linear-gradient(to bottom right, var(--purple) 0%, var(--pink)80%);
+                    color: transparent;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    display: block;
+                    margin: .2rem 0;
+                }
+            }
+        }
+    }
+}
+

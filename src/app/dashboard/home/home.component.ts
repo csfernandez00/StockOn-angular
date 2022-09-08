@@ -51,6 +51,9 @@ export class HomeComponent implements OnInit {
     labels: this.doughnutChartLabels,
     datasets: [],
   };
+  public doughnutChartOptions: any = {
+    responsive: true,
+  };
   public doughnutChartType: ChartType = 'doughnut';
 
   ngOnInit() {

@@ -68,12 +68,20 @@ export class StockComponent implements OnInit {
   }
 
   deleteProduct(product: Product) {
-    const id = product.id;
-    this.stockService.deleteProduct(id);
-    this.productSelected = null;
-    setTimeout(() => {
-      this.refresh();
-    }, 100);
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      disableClose: true,
+      data: { item: 'un producto' },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        const id = product.id;
+        this.stockService.deleteProduct(id);
+        this.productSelected = null;
+        setTimeout(() => {
+          this.refresh();
+        }, 100);
+      }
+    });
   }
 
   editProduct() {

@@ -1,1 +1,134 @@
-<p>profile works!</p>
+<div class="frame">
+    <mat-grid-list class="grid-container" cols="8" rowHeight="fit" [gutterSize]="'1.5rem'">
+
+        <!-- grid item 1 -->
+        <mat-grid-tile class=" grid-item  mat-elevation-z5" colspan="4" rowspan="5">
+            <div class="user-card">
+                <div class="user-info">
+                    <div class="img-cont">
+                        <div class="img">
+                            <mat-icon>person</mat-icon>
+                        </div>
+                    </div>
+                    <div class="data">
+                        <h2>{{user.nombre}}</h2>
+                        <h3>{{user.empresa}}</h3>
+                    </div>
+                </div>
+                <div class="update-info">
+                    <h2 mat-dialog-title class="title">Actualizar datos</h2>
+
+                    <form [formGroup]="userEditForm">
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput type="text" id="nombre" formControlName="nombre">
+                        </mat-form-field>
+
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label>Empresa</mat-label>
+                            <input matInput type="text" id="empresa" formControlName="empresa">
+                        </mat-form-field>
+
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" id="email" formControlName="email">
+                        </mat-form-field>
+
+                    </form>
+
+                    <div class="btns">
+                        <button type="submit" class="btn-create" [disabled]="!userEditForm.touched" mat-raised-button
+                            (click)="onEdit()">Guardar
+                            cambios</button>
+                        <button type="reset" class="btn-cancel" [disabled]="!userEditForm.touched" mat-button
+                            (click)="resetUserForm()">Descartar</button>
+                    </div>
+                </div>
+            </div>
+        </mat-grid-tile>
+
+        <!-- grid item 2 -->
+        <mat-grid-tile colspan="4" rowspan="3" class="grid-item mat-elevation-z5">
+            <div class="update-pass ">
+                <h2 mat-dialog-title class="title">Cambiar contraseña</h2>
+
+                <form [formGroup]="changePassForm">
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label>Contraseña actual</mat-label>
+                        <input matInput [type]="hide1 ? 'password' : 'text'" id="old-pass" formControlName="oldPass">
+                        <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide1">
+                            <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+
+
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label>Nueva contraseña</mat-label>
+                        <input matInput [type]="hide2 ? 'password' : 'text'" id="newPass" formControlName="newPass">
+                        <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide2">
+                            <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label>Confirma nueva contraseña</mat-label>
+                        <input matInput [type]="hide3 ? 'password' : 'text'" id="confirmPass"
+                            formControlName="confirmPass">
+                        <mat-error *ngIf="changePassForm.hasError('notSame')">
+                            Passwords do not match
+                        </mat-error>
+                        <button mat-icon-button matSuffix (click)="hide3 = !hide3" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide3">
+                            <mat-icon>{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+
+
+                </form>
+
+                <div class="btns">
+                    <button type="submit" class="btn-create"
+                        [disabled]="!changePassForm.touched || changePassForm.invalid" mat-raised-button
+                        (click)="newPass()">Actualizar contraseña</button>
+                    <button type="reset" class="btn-cancel"
+                        [disabled]="!changePassForm.touched || changePassForm.invalid" mat-button
+                        (click)=" resetPassForm()">Descartar</button>
+                </div>
+
+            </div>
+        </mat-grid-tile>
+
+        <!-- grid item 3-->
+        <mat-grid-tile colspan="2" rowspan="2" class="grid-item mat-elevation-z5">
+            <div class="cont">
+                <mat-icon class="card-icon heart">favorite_border</mat-icon>
+                <div>
+                    <h3>Apoyar al creador</h3>
+                    <p>Hecha un vistazo a mis redes!</p>
+                    <a mat-stroked-button href="https://www.linkedin.com/in/carlos-sebastian-fernandez-65056322b/"
+                        class="social-link" target="_blank">LinkedIN <mat-icon>link</mat-icon></a>
+                    <a mat-stroked-button href="https://github.com/csfernandez00" class="social-link"
+                        target="_blank">GitHub
+                        <mat-icon>
+                            link</mat-icon>
+                    </a>
+
+                </div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="2" class="grid-item mat-elevation-z5">
+            <div class="cont">
+                <mat-icon class="card-icon" color="warn">error_outline</mat-icon>
+                <div>
+                    <h3>Eliminar cuenta</h3>
+                    <p>Si decides eliminar tu cuenta, debes saber que esto tendrá efectos permanentes y no
+                        podrás
+                        recuperarla.</p>
+                    <button mat-raised-button color="warn" (click)="deleteAccount()">Eliminar cuenta</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

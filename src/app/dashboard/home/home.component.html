@@ -71,8 +71,9 @@
         <mat-grid-tile class="grid-item mat-elevation-z3" id="stats" colspan="4">
             <mat-grid-tile-header class="title">Estadísticas</mat-grid-tile-header>
             <div class="cont">
-                <div>
-                    <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType">
+                <div class="donut-cont">
+                    <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType"
+                        [options]="doughnutChartOptions">
                     </canvas>
                 </div>
                 <div>
