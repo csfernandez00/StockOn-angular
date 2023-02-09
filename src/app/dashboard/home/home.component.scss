@@ -196,25 +196,12 @@
                     z-index: 250;
                     
                 }
-                .donut-cont{
-                    animation: load .5s linear;
-                }
+                
             }
             
         }
     }
 }
-
-@keyframes load {
-    0%{
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-
 
 @media(max-width: 1600px) {
     .frame{

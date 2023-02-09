@@ -5,6 +5,9 @@ import { ChartData, ChartType } from 'chart.js';
 import { StockService } from '../stock.service';
 import { Product } from '../product';
 import { MatTableDataSource } from '@angular/material/table';
+import { User } from '../user';
+import { arrayRandomIndex, Push } from 'tsparticles-engine';
+import { SupportComponent } from '../support/support.component';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +31,7 @@ export class HomeComponent implements OnInit {
     'marca',
     'cantidad',
   ];
+
   dataSource!: any;
 
   constructor(private dialog: MatDialog, private stockService: StockService) {}
@@ -46,11 +50,7 @@ export class HomeComponent implements OnInit {
   public lineChartLegend: boolean = true;
 
   // Doughnut;
-  public doughnutChartLabels: string[] = [];
-  public doughnutChartData: ChartData<'doughnut'> = {
-    labels: this.doughnutChartLabels,
-    datasets: [],
-  };
+  public doughnutChartData!: ChartData<'doughnut'>;
   public doughnutChartOptions: any = {
     responsive: true,
   };
@@ -66,8 +66,6 @@ export class HomeComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Product>(this.recentActivity);
       this.getTotalUnits();
       this.filterProducts();
-      this.getBrand();
-      this.getQuantity();
     });
   }
 
@@ -118,25 +116,25 @@ export class HomeComponent implements OnInit {
       },
       []
     );
-    this.productsResume = productsFiltered;
-  }
-
-  getBrand() {
-    for (let product of this.productsResume) {
-      this.doughnutChartLabels.push(product.marca);
-    }
-  }
-
-  getQuantity() {
-    let arr = [];
-    for (let product of this.productsResume) {
+    let arr: number[] = [];
+    let arr2: String[] = [];
+    productsFiltered.forEach((product) => {
       arr.push(product.cantidad);
-    }
-    this.doughnutChartData.datasets = [
-      {
-        data: arr,
-        backgroundColor: ['#9961F5', '#F57FA4', '#ffe29a'],
-      },
-    ];
+      arr2.push(product.marca);
+      this.doughnutChartData = {
+        labels: [...arr2],
+        datasets: [
+          {
+            data: [...arr],
+            backgroundColor: ['#9961F5', '#F57FA4', '#ffe29a'],
+          },
+        ],
+      };
+    });
+    console.log(this.doughnutChartData.labels);
+  }
+
+  openSupportDialog() {
+    this.dialog.open(SupportComponent);
   }
 }

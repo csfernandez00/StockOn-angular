@@ -21,7 +21,7 @@
             flex-direction: column;
             align-items: flex-end;
             list-style-type: none;
-            gap: 1rem;
+            gap: 2rem;
             width: 100%;
 
             li{
@@ -32,12 +32,12 @@
 
                 a{
                     width: 100%;
-                    padding: 1rem 1.5rem .7rem;
+                    padding: 1.2rem 1.5rem .9rem;
                     border-radius: 10% 0 0 10%;
                     
                     mat-icon{
                         color: #fff;
-                        transform: scale(1.5);
+                        transform: scale(1.8);
 
                     }                      
                 }

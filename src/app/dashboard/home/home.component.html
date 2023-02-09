@@ -10,7 +10,7 @@
                         <div class="icon">
                             <mat-icon class="card-icon">archive</mat-icon>
                             <p><span>+</span>{{lastAdded}} <br>
-                                <mat-hint style="font-size: .9rem;">Nuevos Productos</mat-hint>
+                                <mat-hint style="font-size: .9rem;">Recien agregados</mat-hint>
                             </p>
                         </div>
                         <div class="total">
@@ -110,7 +110,7 @@
                         detallandonos el problema que estas teniendo
                         y te ayudaremos.</p>
                     <button mat-raised-button style="background-color: var(--purple); color:#fff;"
-                        routerLink="/dashboard/support">Contactar</button>
+                        routerLink="/dashboard/support" (click)="openSupportDialog()">Contactar</button>
                 </div>
             </div>
         </mat-grid-tile>

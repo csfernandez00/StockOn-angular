@@ -1,40 +1,38 @@
-
-    <div class="sidenav">
-        <nav>
-            <ul class="utilities">
-                <li>
-                    <a routerLink="/dashboard/home" title="Inicio" routerLinkActive="active">
-                        <mat-icon>home</mat-icon>
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/dashboard/stock" title="Stock" routerLinkActive="active">
-                        <mat-icon>inventory</mat-icon>
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/dashboard/stats" title="Estadísticas" routerLinkActive="active">
-                        <mat-icon>signal_cellular_alt</mat-icon>
-                    </a>
-                </li>
-            </ul>
-            <ul class="last">
-                <li>
-                    <button (click)="openDialog()">
-                        <mat-icon>help_outline</mat-icon>
-                    </button>
-                </li>
-                <li>
-                    <a routerLink="/dashboard/support" title="Soporte" routerLinkActive="active">
-                        <mat-icon> forum</mat-icon>
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/dashboard/profile" title="Perfil" routerLinkActive="active">
-                        <mat-icon >person</mat-icon>
-                    </a>
-                </li>
-            </ul>
-            
-        </nav>
-    </div>
+<div class="sidenav">
+    <nav>
+        <ul class="utilities">
+            <li>
+                <a routerLink="/dashboard/home" title="Inicio" routerLinkActive="active">
+                    <mat-icon>home</mat-icon>
+                </a>
+            </li>
+            <li>
+                <a routerLink="/dashboard/stock" title="Stock" routerLinkActive="active">
+                    <mat-icon>inventory</mat-icon>
+                </a>
+            </li>
+            <!-- <li>
+                <a routerLink="/dashboard/stats" title="Estadísticas" routerLinkActive="active">
+                    <mat-icon>signal_cellular_alt</mat-icon>
+                </a>
+            </li> -->
+        </ul>
+        <ul class="last">
+            <!-- <li>
+                <button title="Ayuda" (click)="openHelpDialog()">
+                    <mat-icon>help_outline</mat-icon>
+                </button>
+            </li> -->
+            <li>
+                <button (click)="openSupportDialog()" title="Soporte">
+                    <mat-icon> forum</mat-icon>
+                </button>
+            </li>
+            <li>
+                <a routerLink="/dashboard/profile" title="Perfil" routerLinkActive="active">
+                    <mat-icon>person</mat-icon>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

@@ -1,1 +1,30 @@
-<p>support works!</p>
+<div class="container">
+    <h2 mat-dialog-title class="title">Contactar al soporte</h2>
+
+    <p>Si estas teniendo algun problema técnico, o tienes alguna duda que necesitas resolver, no dudes en contactarnos!
+    </p>
+
+    <form [formGroup]="supportForm">
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" id="name" formControlName="nombre">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Mail</mat-label>
+            <input matInput type="text" id="mail" formControlName="mail">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Mensaje</mat-label>
+            <textarea style="max-height: 400px; min-height: 200px;" matInput type="text" id="mensaje"
+                formControlName="mensaje"> </textarea>
+        </mat-form-field>
+    </form>
+
+    <div class="btns">
+        <button type="submit" class="btn-create" [disabled]="supportForm.invalid" mat-raised-button>Enviar</button>
+        <button type="button" class="btn-cancel" mat-button mat-dialog-close>Cancelar</button>
+    </div>
+
+</div>

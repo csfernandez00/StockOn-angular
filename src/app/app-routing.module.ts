@@ -12,26 +12,23 @@ import { SupportComponent } from './dashboard/support/support.component';
 import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
-  {path: '', component:LandingComponent},
-  {path: 'access', component:AccessComponent},
-  {path: 'dashboard', component:DashboardComponent, children:
-  [
-    {path: '', redirectTo:'home', pathMatch: 'full'},
-    {path: 'home', component:HomeComponent},
-    {path:'stock', component:StockComponent},
-    {path:'stats', component:StatsComponent},
-    {path:'support', component:SupportComponent},
-    {path:'profile', component:ProfileComponent}
-  ]}
+  { path: '', component: LandingComponent },
+  { path: 'access', component: AccessComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'stock', component: StockComponent },
+      { path: 'stats', component: StatsComponent },
+      { path: 'profile', component: ProfileComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-
-
-
-  
-}
+export class AppRoutingModule {}

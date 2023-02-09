@@ -1,7 +1,7 @@
 .frame {
     height: 100%;
     width: 100%;
-    padding: 1.2rem 1.2rem 2rem ;
+    padding: 1.2rem 1.5rem 2rem;
     .grid-container {
         height: 100%;
         
@@ -11,63 +11,81 @@
             width: 100%;
             height: 100%;
             .user-card{
-                width: 95%;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                .user-info {
+                padding: 1rem 0 0;
+                .user-info-cont{
+                    background: linear-gradient(to top right,var(--purple) 0%,
+                        var(--pink)80%);
                         display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        margin: auto;
-                        gap: 2rem;
-                        width: 80%;
-                        padding: 3rem;
-                        border-bottom: 2px solid #eee;
-                        .img-cont {
-                            background-image: linear-gradient(to bottom right, var(--purple) 0%, var(--pink)80%);
-                            color: transparent;
-                            padding: .3rem;
-                            border-radius: 50%;
-                
-                            .img {
-                                padding: 4rem;
+                            flex-direction: column;
+                            align-items: center;
+                            margin: auto;
+                            border-radius: 1rem;
+                            width: 85%;
+                            padding: .5rem;
+                            box-shadow: 0 5px 15px #aaa;
+                            z-index: 250;
+                    .user-info {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            margin: auto;
+                            gap: 1rem;
+                            width: 100%;
+                            padding: 3rem 1rem;
+                            border-radius: .8rem;
+                            background: #fff;
+                    
+                            .img-cont {
+                                background-image: linear-gradient(to bottom right, var(--purple) 0%, var(--pink)80%);
+                                color: transparent;
+                                padding: .3rem;
                                 border-radius: 50%;
-                                background-color: #fff;
-                
-                
-                                mat-icon {
-                                    background-image: linear-gradient(to bottom right, var(--purple) 0%, var(--pink)80%);
-                                    color: transparent;
-                                    -webkit-background-clip: text;
-                                    background-clip: text;
-                                    transform: scale(3);
+                    
+                                .img {
+                                    padding: 4rem;
+                                    border-radius: 50%;
+                                    background-color: #fff;
+                    
+                    
+                                    mat-icon {
+                                        background-image: linear-gradient(to bottom right, var(--purple) 0%, var(--pink)80%);
+                                        color: transparent;
+                                        -webkit-background-clip: text;
+                                        background-clip: text;
+                                        transform: scale(3);
+                                    }
+                                }
+                    
+                            }
+                    
+                            .data {
+                                margin-top: .5rem;
+                    
+                                h2,
+                                h3 {
+                                    margin: 0 0 0;
+                                    color: #555;
+                                }
+                    
+                                h2 {
+                                    font-size: 1.8rem;
+                                    padding: 0 0 .5rem 0;
+                                }
+                    
+                                h3 {
+                                    font-size: 1.2rem;
                                 }
                             }
-                
                         }
-                
-                        .data {
-                            margin-top: .5rem;
-                
-                            h2,
-                            h3 {
-                                margin: 0 0 0;
-                            }
-
-                            h2{
-                                font-size: 1.8rem;
-                                padding: 0 0 .5rem 0;
-                            }
-                            h3{
-                                font-size: 1.2rem;
-                            }
-                        }
-                    }
+                }
                 
                     .update-info {
                         background-color: #fff;
-                        padding: 2rem 3rem;
+                        padding: 2rem 1.5rem;
                         border-radius: .5rem;
                         width: 90%;
                         
@@ -95,11 +113,11 @@
             .update-pass{
                 background-color: #fff;
                 width: 90%;
-                padding: 1.5rem 3rem;
+                padding: 1.5rem 1.5rem;
                 form {
                         display: flex;
                         flex-direction: column;
-                        gap: 1.5rem;
+                        gap: .5rem;
                         padding-bottom: 1rem;
                     }
                 

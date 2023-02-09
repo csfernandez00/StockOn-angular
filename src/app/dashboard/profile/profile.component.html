@@ -2,27 +2,35 @@
     <mat-grid-list class="grid-container" cols="8" rowHeight="fit" [gutterSize]="'1.5rem'">
 
         <!-- grid item 1 -->
-        <mat-grid-tile class=" grid-item  mat-elevation-z5" colspan="4" rowspan="5">
+        <mat-grid-tile class=" grid-item  mat-elevation-z5" colspan="4" rowspan="11">
             <div class="user-card">
-                <div class="user-info">
-                    <div class="img-cont">
-                        <div class="img">
-                            <mat-icon>person</mat-icon>
+                <div class="user-info-cont">
+                    <div class="user-info">
+                        <div class="img-cont">
+                            <div class="img">
+                                <mat-icon>person</mat-icon>
+                            </div>
                         </div>
-                    </div>
-                    <div class="data">
-                        <h2>{{user.nombre}}</h2>
-                        <h3>{{user.empresa}}</h3>
+                        <div class="data">
+                            <h2>{{user.nombre+" "+user.apellido}}</h2>
+                            <h3>{{user.empresa}}</h3>
+                        </div>
                     </div>
                 </div>
                 <div class="update-info">
                     <h2 mat-dialog-title class="title">Actualizar datos</h2>
 
                     <form [formGroup]="userEditForm">
-                        <mat-form-field class="form-field" appearance="fill">
-                            <mat-label>Nombre</mat-label>
-                            <input matInput type="text" id="nombre" formControlName="nombre">
-                        </mat-form-field>
+                        <div style="display: flex; flex-direction: row; justify-content: space-between; gap: 3rem;">
+                            <mat-form-field style="flex: 1 1;" class="form-field" appearance="fill">
+                                <mat-label>Nombre</mat-label>
+                                <input matInput type="text" id="nombre" formControlName="nombre">
+                            </mat-form-field>
+                            <mat-form-field style="flex: 1 1;" class="form-field" appearance="fill">
+                                <mat-label>Apellido</mat-label>
+                                <input matInput type="text" id="apellido" formControlName="apellido">
+                            </mat-form-field>
+                        </div>
 
                         <mat-form-field class="form-field" appearance="fill">
                             <mat-label>Empresa</mat-label>
@@ -48,12 +56,12 @@
         </mat-grid-tile>
 
         <!-- grid item 2 -->
-        <mat-grid-tile colspan="4" rowspan="3" class="grid-item mat-elevation-z5">
+        <mat-grid-tile colspan="4" rowspan="6" class="grid-item mat-elevation-z5">
             <div class="update-pass ">
                 <h2 mat-dialog-title class="title">Cambiar contraseña</h2>
 
                 <form [formGroup]="changePassForm">
-                    <mat-form-field class="form-field" appearance="fill">
+                    <mat-form-field class="form-field" appearance="outline">
                         <mat-label>Contraseña actual</mat-label>
                         <input matInput [type]="hide1 ? 'password' : 'text'" id="old-pass" formControlName="oldPass">
                         <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
@@ -63,7 +71,7 @@
                     </mat-form-field>
 
 
-                    <mat-form-field class="form-field" appearance="fill">
+                    <mat-form-field class="form-field" appearance="outline">
                         <mat-label>Nueva contraseña</mat-label>
                         <input matInput [type]="hide2 ? 'password' : 'text'" id="newPass" formControlName="newPass">
                         <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
@@ -72,7 +80,7 @@
                         </button>
                     </mat-form-field>
 
-                    <mat-form-field class="form-field" appearance="fill">
+                    <mat-form-field class="form-field" appearance="outline">
                         <mat-label>Confirma nueva contraseña</mat-label>
                         <input matInput [type]="hide3 ? 'password' : 'text'" id="confirmPass"
                             formControlName="confirmPass">
@@ -101,7 +109,7 @@
         </mat-grid-tile>
 
         <!-- grid item 3-->
-        <mat-grid-tile colspan="2" rowspan="2" class="grid-item mat-elevation-z5">
+        <mat-grid-tile colspan="2" rowspan="5" class="grid-item mat-elevation-z5">
             <div class="cont">
                 <mat-icon class="card-icon heart">favorite_border</mat-icon>
                 <div>
@@ -118,7 +126,7 @@
                 </div>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile colspan="2" rowspan="2" class="grid-item mat-elevation-z5">
+        <mat-grid-tile colspan="2" rowspan="5" class="grid-item mat-elevation-z5">
             <div class="cont">
                 <mat-icon class="card-icon" color="warn">error_outline</mat-icon>
                 <div>
